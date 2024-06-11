@@ -16,10 +16,13 @@ public class User
             Password = value;
         }
     }
-    public User()
+    public User(string fullname ,string email,string pasword)
     {
         Id++;
         id = Id;
+        FullName = fullname;
+        Email = email;
+        Password = pasword;
 
     }
 
@@ -53,9 +56,9 @@ public class User
 
         return containsUpperCase && containsLowerCase && containsDigit;
     }
-    public string GetInfo(string id,string email ,string fullname)
+    public string GetInfo()
     {
-        return $" id : {id} email : {email} fullname : {fullname}";
+        return $" id : {id} email : {Email} fullname : {FullName}";
     }
     public static int FindById(User[]users,int id)
     {

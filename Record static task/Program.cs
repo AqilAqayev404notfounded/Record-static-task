@@ -1,10 +1,54 @@
 ﻿using Record_static_task;
 
-User user = new User() ;
+User[] users = new User[3];
+int userCount = 0;
+while (userCount < users.Length)
+{
+    Console.WriteLine("Zehmet olmasa fulname daxil edin:");
+    string fullname = Console.ReadLine();
+    Console.WriteLine("Zehmet olmasa email daxil edin:");
+    string email = Console.ReadLine();
+    Console.WriteLine("Zehmet olmasa şifrəni daxil edin:");
+    string password = Console.ReadLine();
 
-Console.WriteLine(user.id);
-user.FullName = "Aqil";
-user.Email = "asdddd@gmail.com";
-user.Password = "12345678";
+    users[userCount] = new User(fullname,email, password);
+    userCount++;
+    Console.WriteLine("Istifadeci elave olundu");
+}
+while (true)
+{
+    Console.WriteLine
+        ("1.Show all users \n" +
+         "2.Get info by id\n" +
+         "0.Quit");
 
-Console.WriteLine(user.GetInfo());  
+    int command = Convert.ToInt32(Console.ReadLine());
+    switch (command)
+    {
+        case 0:
+            return;
+        case 1:
+            Console.WriteLine("All users:");
+            for (int i = 0; i < userCount; i++)
+            {
+                users[i].GetInfo();
+            }
+            break;
+        case 2:
+            Console.WriteLine("Id daxil edin");
+            int id = Convert.ToInt32(Console.ReadLine());
+            int index = User.FindById(users, id);
+            if (index != -1)
+            {
+                users[index].GetInfo();
+            }
+            else
+            {
+                Console.WriteLine("Bele istifadeci movcud deyil");
+            }
+            break;
+        default:
+            Console.WriteLine("Zehmet olmasa duzgun komanda daxil edin");
+            break;
+    }
+}
