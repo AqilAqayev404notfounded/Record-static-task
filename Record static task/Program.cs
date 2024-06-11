@@ -4,23 +4,20 @@ User[] users = new User[3];
 int userCount = 0;
 while (userCount < users.Length)
 {
-    Console.WriteLine("Zehmet olmasa fulname daxil edin:");
+    Console.WriteLine("Please enter fullname:");
     string fullname = Console.ReadLine();
-    Console.WriteLine("Zehmet olmasa email daxil edin:");
+    Console.WriteLine("Please enter email:");
     string email = Console.ReadLine();
-    Console.WriteLine("Zehmet olmasa şifrəni daxil edin:");
+    Console.WriteLine("Please enter password:");
     string password = Console.ReadLine();
 
     users[userCount] = new User(fullname,email, password);
     userCount++;
-    Console.WriteLine("Istifadeci elave olundu");
+    Console.WriteLine("User added");
 }
 while (true)
 {
-    Console.WriteLine
-        ("1.Show all users \n" +
-         "2.Get info by id\n" +
-         "0.Quit");
+    Console.WriteLine("1.Show all users \n" +"2.Get info by id\n" +"0.Quit");
 
     int command = Convert.ToInt32(Console.ReadLine());
     switch (command)
@@ -35,7 +32,7 @@ while (true)
             }
             break;
         case 2:
-            Console.WriteLine("Id daxil edin");
+            Console.WriteLine("Enter the id");
             int id = Convert.ToInt32(Console.ReadLine());
             int index = User.FindById(users, id);
             if (index != -1)
@@ -44,11 +41,11 @@ while (true)
             }
             else
             {
-                Console.WriteLine("Bele istifadeci movcud deyil");
+                Console.WriteLine("This user does not exist");
             }
             break;
         default:
-            Console.WriteLine("Zehmet olmasa duzgun komanda daxil edin");
+            Console.WriteLine("Please enter the correct command");
             break;
     }
 }

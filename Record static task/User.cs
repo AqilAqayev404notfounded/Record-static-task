@@ -7,13 +7,14 @@ public class User
     public int id {  get; }
     public string FullName { get; set; }
     public string Email { get; set; }
+    string _password;
     public string Password 
     {
-        get {  return Password; }
+        get {  return _password; }
         set
         {
-            if (PasswordChecer(Password))
-            Password = value;
+            if (PasswordChecer(value ))
+            _password = value;
         }
     }
     public User(string fullname ,string email,string pasword)
