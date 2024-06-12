@@ -4,20 +4,20 @@ namespace Record_static_task;
 public class User
 {
     static int Id;
-    public int id {  get; }
+    public int id { get; }
     public string FullName { get; set; }
     public string Email { get; set; }
     string _password;
-    public string Password 
+    public string Password
     {
-        get {  return _password; }
+        get { return _password; }
         set
         {
-            if (PasswordChecer(value ))
-            _password = value;
+            if (PasswordChecer(value))
+                _password = value;
         }
     }
-    public User(string fullname ,string email,string pasword)
+    public User(string fullname, string email, string pasword)
     {
         Id++;
         id = Id;
@@ -61,17 +61,32 @@ public class User
     {
         return $" id : {id} email : {Email} fullname : {FullName}";
     }
-    public static int FindById(User[]users,int id)
+    //public static int FindById(User[]users,int id)
+    //{
+    //    for (int i = 0; i < users.Length; i++)
+    //    {
+    //        if (users[i].id == id)
+    //        {
+    //            return i;
+    //        }
+    //    }
+    //    return -1;
+    //}
+
+
+
+    public static void FindById(int id, User[] users)
     {
-        for (int i = 0; i < users.Length; i++)
+        foreach (User user in users)
         {
-            if (users[i].id == id)
+
+            if (user.id == id)
             {
-                return i;
+                Console.WriteLine(user.GetInfo());
+                return;
             }
         }
-        return -1;
-    }
 
-  
+        Console.WriteLine("User not found");
+    }
 }
